@@ -1,0 +1,154 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://art/Rainbow.png" type="Texture" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://art/superman.png" type="Texture" id=3]
+[ext_resource path="res://art/Guns.png" type="Texture" id=4]
+[ext_resource path="res://art/Skateboard.png" type="Texture" id=5]
+[ext_resource path="res://art/Dice.png" type="Texture" id=6]
+[ext_resource path="res://art/Ptony.png" type="Texture" id=7]
+[ext_resource path="res://art/dragon.png" type="Texture" id=8]
+[ext_resource path="res://Wiggle.tres" type="Material" id=9]
+[ext_resource path="res://icon.png" type="Texture" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "6",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "4",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "0",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "5",
+"speed": 5.0
+} ]
+
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+
+uniform vec2 deformation = vec2(0, 0);
+uniform float sideWaysDeformationFactor = 5.0;
+uniform float knockbackFactor = 0.4;
+
+void vertex() {
+	vec2 deformationStrength = abs(deformation);
+	float sideWaysDeformation = min(deformationStrength.x, deformationStrength.y);
+	float spriteWidth = abs(VERTEX.x);
+	if (sign(VERTEX.y) != sign(deformation.y)) {
+		VERTEX.x += sideWaysDeformation * sideWaysDeformationFactor * spriteWidth * sign(deformation.x);
+	}
+	vec2 scale = 1.0 - deformationStrength;
+	
+	VERTEX.x *= scale.x / scale.y;
+	VERTEX.y *= scale.y / scale.x;
+	VERTEX.xy += deformation * spriteWidth * knockbackFactor;
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 4 )
+shader_param/deformation = Vector2( 0, 0 )
+shader_param/sideWaysDeformationFactor = 5.0
+shader_param/knockbackFactor = 0.4
+
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+uniform vec2 dir = vec2(0,0);
+uniform int quality = 4;
+
+void vertex(){
+	vec2 blurSize = abs(dir) * 2.0;
+	VERTEX *= blurSize + 1.0;
+	UV = (UV - 0.5) * (blurSize + 1.0) + 0.5;
+}
+
+float insideUnitSquare(vec2 v) {
+    vec2 s = step(vec2(0.0), v) - step(vec2(1.0), v);
+    return s.x * s.y;   
+}
+
+void fragment(){
+	float inSquare = insideUnitSquare(UV);
+	float numSamples = inSquare;
+	COLOR = texture(TEXTURE, UV) * inSquare;
+	vec2 stepSize = dir/(float(quality));
+	vec2 uv;
+	for(int i = 1; i <= quality; i++){
+		uv = UV + stepSize * float(i);
+		inSquare = insideUnitSquare(uv);
+		numSamples += inSquare;
+		COLOR += texture(TEXTURE, uv) * inSquare;
+		
+		uv = UV - stepSize * float(i);
+		inSquare = insideUnitSquare(uv);
+		numSamples += inSquare;
+		COLOR += texture(TEXTURE, uv) * inSquare;
+	}
+	COLOR.rgb /= numSamples;
+	COLOR.a /= float(quality)*2.0 + 1.0;
+}"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
+shader_param/dir = Vector2( 0, 0 )
+shader_param/quality = 4
+
+[node name="Player" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="PlayerIcon" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 1 )
+animation = "6"
+
+[node name="AffectedPlayer" type="AnimatedSprite" parent="."]
+visible = false
+material = ExtResource( 9 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 1 )
+animation = "6"
+
+[node name="Moving" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="TestShadersWater" type="Sprite" parent="."]
+visible = false
+material = SubResource( 3 )
+texture = ExtResource( 10 )
+
+[node name="TestShadersDeform" type="Sprite" parent="."]
+visible = false
+material = SubResource( 3 )
+texture = ExtResource( 10 )
+
+[node name="TestShadersMotion" type="Sprite" parent="."]
+visible = false
+material = SubResource( 6 )
+texture = ExtResource( 10 )
+[connection signal="timeout" from="Moving" to="." method="doneMoving"]

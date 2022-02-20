@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://art/DiceFaces/face1.png" type="Texture" id=1]
+[ext_resource path="res://art/DiceFaces/blank.png" type="Texture" id=2]
+[ext_resource path="res://art/DiceFaces/face6.png" type="Texture" id=3]
+[ext_resource path="res://art/DiceFaces/face3.png" type="Texture" id=4]
+[ext_resource path="res://art/DiceFaces/face2.png" type="Texture" id=5]
+[ext_resource path="res://art/DiceFaces/face4.png" type="Texture" id=6]
+[ext_resource path="res://art/DiceFaces/face5.png" type="Texture" id=7]
+[ext_resource path="res://VisualDice.gd" type="Script" id=8]
+[ext_resource path="res://RotationBlur.tres" type="Material" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "6",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "4",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "0",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "5",
+"speed": 5.0
+} ]
+
+[node name="VisualDice" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="DiceFace" type="AnimatedSprite" parent="."]
+material = ExtResource( 9 )
+frames = SubResource( 1 )
+animation = "0"
+
+[node name="Roll" type="Label" parent="."]
+margin_left = -35.2854
+margin_top = -9.6198
+margin_right = 4.71461
+margin_bottom = 4.3802
+rect_scale = Vector2( 1.72845, 1.72845 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.235294, 0.282353, 0.298039, 1 )
+text = "67"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

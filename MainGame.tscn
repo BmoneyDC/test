@@ -1,0 +1,1351 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://sounds/roll.wav" type="AudioStream" id=1]
+[ext_resource path="res://sounds/cash2.wav" type="AudioStream" id=2]
+[ext_resource path="res://MainGame.gd" type="Script" id=3]
+[ext_resource path="res://art/tabletop.png" type="Texture" id=4]
+[ext_resource path="res://sounds/dingsound.wav" type="AudioStream" id=5]
+[ext_resource path="res://art/Board Middle.png" type="Texture" id=6]
+[ext_resource path="res://sounds/incorrect.wav" type="AudioStream" id=7]
+[ext_resource path="res://BlackCherry.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Metropolis-ExtraLight.otf" type="DynamicFontData" id=9]
+[ext_resource path="res://GlacialIndifference-Regular.otf" type="DynamicFontData" id=10]
+
+[sub_resource type="InputEventAction" id=1]
+action = "roll"
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
+
+[sub_resource type="InputEventAction" id=5]
+action = "endturn"
+
+[sub_resource type="ShortCut" id=6]
+shortcut = SubResource( 5 )
+
+[sub_resource type="InputEventAction" id=3]
+action = "purchase"
+
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 15
+extra_spacing_top = -2
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=8]
+extra_spacing_top = -6
+font_data = ExtResource( 10 )
+
+[node name="MainGame" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="600By600" type="Camera2D" parent="."]
+
+[node name="Experimental" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="Board" type="Node" parent="."]
+
+[node name="Board" type="ColorRect" parent="Board"]
+light_mask = 2048
+margin_left = -302.0
+margin_top = -302.0
+margin_right = 302.0
+margin_bottom = 302.0
+color = Color( 0.898039, 0.882353, 0.729412, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="BoardMiddle" type="Sprite" parent="Board"]
+texture = ExtResource( 6 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Board"]
+
+[node name="PauseMenu" type="Panel" parent="Board/CanvasLayer"]
+visible = false
+margin_left = 28.0
+margin_top = 24.0
+margin_right = 1001.0
+margin_bottom = 566.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Board/CanvasLayer/PauseMenu"]
+margin_left = 442.388
+margin_top = 160.774
+margin_right = 525.388
+margin_bottom = 279.774
+rect_scale = Vector2( 1.66883, 1.84 )
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseMenuText" type="Label" parent="Board/CanvasLayer/PauseMenu/VBoxContainer"]
+margin_right = 83.0
+margin_bottom = 14.0
+text = "PAUSED"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" type="Button" parent="Board/CanvasLayer/PauseMenu/VBoxContainer"]
+margin_top = 29.0
+margin_right = 83.0
+margin_bottom = 49.0
+text = "Resume"
+
+[node name="Admin" type="Button" parent="Board/CanvasLayer/PauseMenu/VBoxContainer"]
+margin_top = 64.0
+margin_right = 83.0
+margin_bottom = 84.0
+text = "Admin"
+
+[node name="MainMenu" type="Button" parent="Board/CanvasLayer/PauseMenu/VBoxContainer"]
+margin_top = 99.0
+margin_right = 83.0
+margin_bottom = 119.0
+text = "Main Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Board/CanvasLayer"]
+visible = false
+margin_left = 28.0
+margin_top = 24.0
+margin_right = 1001.0
+margin_bottom = 566.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemList" type="ItemList" parent="Board/CanvasLayer/Panel"]
+margin_left = 33.0
+margin_top = 26.0
+margin_right = 944.0
+margin_bottom = 512.0
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+max_columns = 3
+fixed_column_width = 280
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="Button" parent="Board/CanvasLayer/Panel"]
+margin_left = 947.653
+margin_top = 5.99351
+margin_right = 966.653
+margin_bottom = 25.9935
+text = "X"
+
+[node name="Button" type="Button" parent="Board/CanvasLayer/Panel"]
+margin_left = 343.255
+margin_top = 515.663
+margin_right = 428.255
+margin_bottom = 535.663
+text = "Trade"
+
+[node name="Invest" type="Button" parent="Board/CanvasLayer/Panel"]
+margin_left = 524.982
+margin_top = 515.663
+margin_right = 609.982
+margin_bottom = 535.663
+text = "Rent Deal"
+
+[node name="PropertyProperties" type="Panel" parent="Board/CanvasLayer"]
+visible = false
+margin_left = 171.631
+margin_top = 90.7758
+margin_right = 896.631
+margin_bottom = 487.776
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseProp" type="Button" parent="Board/CanvasLayer/PropertyProperties"]
+margin_left = 323.26
+margin_top = 364.198
+margin_right = 389.26
+margin_bottom = 384.198
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TradeProp" type="Button" parent="Board/CanvasLayer/PropertyProperties"]
+margin_left = 94.1569
+margin_top = 363.722
+margin_right = 160.157
+margin_bottom = 383.722
+text = "Trade"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RentDealProp" type="Button" parent="Board/CanvasLayer/PropertyProperties"]
+margin_left = 88.9128
+margin_top = 331.508
+margin_right = 162.913
+margin_bottom = 351.508
+text = "Rent Deal"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PropInfo" type="Label" parent="Board/CanvasLayer/PropertyProperties"]
+margin_left = 75.2599
+margin_top = 18.2421
+margin_right = 649.26
+margin_bottom = 81.2421
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageCenter" type="Label" parent="Board/CanvasLayer/PropertyProperties"]
+margin_left = 95.0
+margin_top = 240.0
+margin_right = 662.0
+margin_bottom = 275.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mortgage" type="Button" parent="Board/CanvasLayer/PropertyProperties"]
+margin_left = 90.6365
+margin_top = 298.309
+margin_right = 161.637
+margin_bottom = 318.309
+text = "Mortgage"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyHouse" type="Button" parent="Board/CanvasLayer/PropertyProperties"]
+margin_left = 313.999
+margin_top = 294.638
+margin_right = 394.999
+margin_bottom = 314.638
+text = "Buy House"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyHouse2" type="Button" parent="Board/CanvasLayer/PropertyProperties"]
+margin_left = 288.171
+margin_top = 331.176
+margin_right = 434.171
+margin_bottom = 351.176
+text = "Buy 1 House on Each"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SellHouse" type="Button" parent="Board/CanvasLayer/PropertyProperties"]
+margin_left = 515.779
+margin_top = 297.64
+margin_right = 596.779
+margin_bottom = 317.64
+text = "Sell House"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextMonopolyProp" type="Button" parent="Board/CanvasLayer/PropertyProperties"]
+margin_left = 469.621
+margin_top = 331.82
+margin_right = 652.621
+margin_bottom = 351.82
+text = "Next Property in Monopoly"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextOwnedMonopoly" type="Button" parent="Board/CanvasLayer/PropertyProperties"]
+margin_left = 470.371
+margin_top = 364.697
+margin_right = 653.371
+margin_bottom = 384.697
+text = "Next Owned Property"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerProperties" type="Panel" parent="Board/CanvasLayer"]
+visible = false
+margin_left = 171.631
+margin_top = 90.7758
+margin_right = 896.631
+margin_bottom = 487.776
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClosePlayerProp" type="Button" parent="Board/CanvasLayer/PlayerProperties"]
+margin_left = 322.0
+margin_top = 339.0
+margin_right = 388.0
+margin_bottom = 359.0
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerPropInfo" type="RichTextLabel" parent="Board/CanvasLayer/PlayerProperties"]
+margin_left = 75.0
+margin_top = 18.0
+margin_right = 649.0
+margin_bottom = 213.0
+bbcode_enabled = true
+bbcode_text = "[color=blue]test[/color]"
+text = "test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageCenter" type="Label" parent="Board/CanvasLayer/PlayerProperties"]
+margin_left = 95.0
+margin_top = 240.0
+margin_right = 662.0
+margin_bottom = 275.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mortgage" type="Button" parent="Board/CanvasLayer/PlayerProperties"]
+visible = false
+margin_left = 90.6365
+margin_top = 298.309
+margin_right = 161.637
+margin_bottom = 318.309
+text = "Mortgage"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyHouse" type="Button" parent="Board/CanvasLayer/PlayerProperties"]
+visible = false
+margin_left = 312.109
+margin_top = 298.418
+margin_right = 385.109
+margin_bottom = 318.418
+text = "Buy House"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SellHouse" type="Button" parent="Board/CanvasLayer/PlayerProperties"]
+visible = false
+margin_left = 512.782
+margin_top = 300.637
+margin_right = 593.782
+margin_bottom = 320.637
+text = "Sell House"
+
+[node name="Auction" type="Panel" parent="Board/CanvasLayer"]
+visible = false
+margin_left = 171.631
+margin_top = 90.7758
+margin_right = 896.631
+margin_bottom = 487.776
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Submit" type="Button" parent="Board/CanvasLayer/Auction"]
+margin_left = 322.0
+margin_top = 339.0
+margin_right = 388.0
+margin_bottom = 359.0
+text = "Forfit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AuctionInfo" type="Label" parent="Board/CanvasLayer/Auction"]
+margin_left = 75.0
+margin_top = 18.0
+margin_right = 649.0
+margin_bottom = 213.0
+
+[node name="AuctionMessage" type="Label" parent="Board/CanvasLayer/Auction"]
+margin_left = 95.0
+margin_top = 240.0
+margin_right = 662.0
+margin_bottom = 275.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Increase1" type="Button" parent="Board/CanvasLayer/Auction"]
+margin_left = 90.6365
+margin_top = 298.309
+margin_right = 161.637
+margin_bottom = 318.309
+text = "Increase 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Increase10" type="Button" parent="Board/CanvasLayer/Auction"]
+margin_left = 312.109
+margin_top = 298.418
+margin_right = 385.109
+margin_bottom = 318.418
+text = "Increase 10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Increase100" type="Button" parent="Board/CanvasLayer/Auction"]
+margin_left = 512.782
+margin_top = 300.637
+margin_right = 593.782
+margin_bottom = 320.637
+text = "Increase 100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RuleVarient" type="Panel" parent="Board/CanvasLayer"]
+visible = false
+margin_left = 171.631
+margin_top = 90.7758
+margin_right = 896.631
+margin_bottom = 487.776
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pass" type="Button" parent="Board/CanvasLayer/RuleVarient"]
+margin_left = 322.0
+margin_top = 339.0
+margin_right = 388.0
+margin_bottom = 359.0
+text = "Pass"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GeneralInfo" type="Label" parent="Board/CanvasLayer/RuleVarient"]
+margin_left = 75.0
+margin_top = 18.0
+margin_right = 649.0
+margin_bottom = 213.0
+text = "You may travel to one of these railroads.
+You will be forced to pay for it when you land on it."
+align = 1
+valign = 1
+
+[node name="ResolveRule" type="Label" parent="Board/CanvasLayer/RuleVarient"]
+margin_left = 95.0
+margin_top = 240.0
+margin_right = 662.0
+margin_bottom = 275.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Railroad1" type="Button" parent="Board/CanvasLayer/RuleVarient"]
+margin_left = 90.6365
+margin_top = 298.309
+margin_right = 161.637
+margin_bottom = 318.309
+text = "-----"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Railroad2" type="Button" parent="Board/CanvasLayer/RuleVarient"]
+margin_left = 312.109
+margin_top = 298.418
+margin_right = 385.109
+margin_bottom = 318.418
+text = "------"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Railroad3" type="Button" parent="Board/CanvasLayer/RuleVarient"]
+margin_left = 512.782
+margin_top = 300.637
+margin_right = 593.782
+margin_bottom = 320.637
+text = "------"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TradeScreen" type="Panel" parent="Board/CanvasLayer"]
+visible = false
+margin_left = 171.631
+margin_top = 90.7758
+margin_right = 896.631
+margin_bottom = 487.776
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseProp" type="Button" parent="Board/CanvasLayer/TradeScreen"]
+margin_left = 322.0
+margin_top = 339.0
+margin_right = 388.0
+margin_bottom = 359.0
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TradeMessage" type="Label" parent="Board/CanvasLayer/TradeScreen"]
+margin_left = 75.2599
+margin_top = 18.2421
+margin_right = 649.26
+margin_bottom = 81.2421
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyPlayerInfo" type="Label" parent="Board/CanvasLayer/TradeScreen"]
+margin_left = 15.9131
+margin_top = 104.641
+margin_right = 133.913
+margin_bottom = 124.641
+text = "Buyer Player:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SellPlayerInfo" type="Label" parent="Board/CanvasLayer/TradeScreen"]
+margin_left = 364.225
+margin_top = 104.175
+margin_right = 482.225
+margin_bottom = 124.175
+text = "Sell Player:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyMoneyInfo" type="Label" parent="Board/CanvasLayer/TradeScreen"]
+margin_left = 68.9685
+margin_top = 185.132
+margin_right = 186.969
+margin_bottom = 205.132
+text = "Offer:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SellPropertyInfo" type="Label" parent="Board/CanvasLayer/TradeScreen"]
+margin_left = 464.231
+margin_top = 187.513
+margin_right = 582.231
+margin_bottom = 207.513
+text = "--------"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageCenter" type="Label" parent="Board/CanvasLayer/TradeScreen"]
+margin_left = 95.0
+margin_top = 240.0
+margin_right = 662.0
+margin_bottom = 275.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mortgage" type="Button" parent="Board/CanvasLayer/TradeScreen"]
+visible = false
+margin_left = 90.6365
+margin_top = 298.309
+margin_right = 161.637
+margin_bottom = 318.309
+text = "Mortgage"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TradeConfrim" type="Button" parent="Board/CanvasLayer/TradeScreen"]
+margin_left = 304.172
+margin_top = 299.212
+margin_right = 405.172
+margin_bottom = 319.212
+text = "Confirm Trade"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SellHouse" type="Button" parent="Board/CanvasLayer/TradeScreen"]
+visible = false
+margin_left = 512.782
+margin_top = 300.637
+margin_right = 593.782
+margin_bottom = 320.637
+text = "Sell House"
+
+[node name="MoneyPlayerSelector" type="SpinBox" parent="Board/CanvasLayer/TradeScreen"]
+margin_left = 206.362
+margin_top = 100.8
+margin_right = 280.362
+margin_bottom = 124.8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PropertyPlayerSelector" type="SpinBox" parent="Board/CanvasLayer/TradeScreen"]
+visible = false
+margin_left = 488.126
+margin_top = 102.387
+margin_right = 562.126
+margin_bottom = 126.387
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoneyOffered" type="SpinBox" parent="Board/CanvasLayer/TradeScreen"]
+margin_left = 206.362
+margin_top = 181.757
+margin_right = 280.362
+margin_bottom = 205.757
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PropertySlector" type="SpinBox" parent="Board/CanvasLayer/TradeScreen"]
+margin_left = 366.444
+margin_top = 183.794
+margin_right = 440.444
+margin_bottom = 207.794
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Admin" type="Panel" parent="Board/CanvasLayer"]
+visible = false
+margin_left = 171.631
+margin_top = 90.7758
+margin_right = 896.631
+margin_bottom = 487.776
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseAdmin" type="Button" parent="Board/CanvasLayer/Admin"]
+margin_left = 322.0
+margin_top = 339.0
+margin_right = 388.0
+margin_bottom = 359.0
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfrimMessage" type="Label" parent="Board/CanvasLayer/Admin"]
+margin_left = 72.4282
+margin_top = 90.9204
+margin_right = 646.428
+margin_bottom = 153.92
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AlteredPlayer" type="Label" parent="Board/CanvasLayer/Admin"]
+margin_left = 179.895
+margin_top = 46.7486
+margin_right = 297.896
+margin_bottom = 66.7486
+text = "Altered Player:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PropertyText" type="Label" parent="Board/CanvasLayer/Admin"]
+margin_left = 373.389
+margin_top = 189.274
+margin_right = 491.39
+margin_bottom = 209.274
+text = "Property"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyMoneyInfo" type="Label" parent="Board/CanvasLayer/Admin"]
+margin_left = 71.8001
+margin_top = 192.683
+margin_right = 189.801
+margin_bottom = 212.683
+text = "Money"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PropertySelectionInfo" type="Label" parent="Board/CanvasLayer/Admin"]
+margin_left = 531.246
+margin_top = 189.401
+margin_right = 649.246
+margin_bottom = 209.401
+text = "--------"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageCenter" type="Label" parent="Board/CanvasLayer/Admin"]
+margin_left = 95.0
+margin_top = 240.0
+margin_right = 662.0
+margin_bottom = 275.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AlterPlayer" type="Button" parent="Board/CanvasLayer/Admin"]
+margin_left = 304.172
+margin_top = 299.212
+margin_right = 405.172
+margin_bottom = 319.212
+text = "Alter Player"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerEdit" type="SpinBox" parent="Board/CanvasLayer/Admin"]
+margin_left = 387.586
+margin_top = 44.1675
+margin_right = 461.586
+margin_bottom = 68.1675
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoneyEdit" type="SpinBox" parent="Board/CanvasLayer/Admin"]
+margin_left = 188.428
+margin_top = 191.196
+margin_right = 262.428
+margin_bottom = 215.196
+max_value = 1000.0
+value = 1000.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PropertyEdit" type="SpinBox" parent="Board/CanvasLayer/Admin"]
+margin_left = 472.158
+margin_top = 185.682
+margin_right = 546.158
+margin_bottom = 209.682
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RentDeal" type="Panel" parent="Board/CanvasLayer"]
+visible = false
+margin_left = 171.631
+margin_top = 90.7758
+margin_right = 896.631
+margin_bottom = 487.776
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseInvest" type="Button" parent="Board/CanvasLayer/RentDeal"]
+margin_left = 322.0
+margin_top = 339.0
+margin_right = 388.0
+margin_bottom = 359.0
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TradeMessage" type="Label" parent="Board/CanvasLayer/RentDeal"]
+margin_left = 73.6652
+margin_top = 75.3665
+margin_right = 647.665
+margin_bottom = 111.366
+text = "Enter Player to Give a Percent"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerDealt" type="Label" parent="Board/CanvasLayer/RentDeal"]
+margin_left = 71.3496
+margin_top = 132.08
+margin_right = 189.35
+margin_bottom = 152.08
+text = "Player in Deal:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SellPlayerInfo" type="Label" parent="Board/CanvasLayer/RentDeal"]
+visible = false
+margin_left = 364.225
+margin_top = 104.175
+margin_right = 482.225
+margin_bottom = 124.175
+text = "Sell Player:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyMoneyInfo" type="Label" parent="Board/CanvasLayer/RentDeal"]
+margin_left = 68.9685
+margin_top = 185.132
+margin_right = 186.969
+margin_bottom = 205.132
+text = "Percent Given:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SellPropertyInfo" type="Label" parent="Board/CanvasLayer/RentDeal"]
+margin_left = 193.926
+margin_top = 42.0155
+margin_right = 311.926
+margin_bottom = 62.0155
+text = "--------"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RentMessageCenter" type="Label" parent="Board/CanvasLayer/RentDeal"]
+margin_left = 95.0
+margin_top = 240.0
+margin_right = 662.0
+margin_bottom = 275.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmDeal" type="Button" parent="Board/CanvasLayer/RentDeal"]
+margin_left = 206.729
+margin_top = 297.21
+margin_right = 307.729
+margin_bottom = 317.21
+text = "Confirm Split"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndDeal" type="Button" parent="Board/CanvasLayer/RentDeal"]
+margin_left = 391.604
+margin_top = 295.875
+margin_right = 492.604
+margin_bottom = 315.875
+text = "Absolve Deal"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerDealtSelector" type="SpinBox" parent="Board/CanvasLayer/RentDeal"]
+margin_left = 203.692
+margin_top = 130.166
+margin_right = 277.692
+margin_bottom = 154.166
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PropertyPlayerSelector" type="SpinBox" parent="Board/CanvasLayer/RentDeal"]
+visible = false
+margin_left = 488.126
+margin_top = 102.387
+margin_right = 562.126
+margin_bottom = 126.387
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PercentOffered" type="SpinBox" parent="Board/CanvasLayer/RentDeal"]
+margin_left = 206.362
+margin_top = 181.757
+margin_right = 280.362
+margin_bottom = 205.757
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RentPropertySlector" type="SpinBox" parent="Board/CanvasLayer/RentDeal"]
+margin_left = 415.875
+margin_top = 40.6629
+margin_right = 489.875
+margin_bottom = 64.6629
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Table" type="Sprite" parent="."]
+position = Vector2( -33.3112, -19.6656 )
+scale = Vector2( 3.72621, 1.67291 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LeftHandControl" type="Node2D" parent="."]
+position = Vector2( -14.8439, -25.098 )
+scale = Vector2( 1.48, 1.48 )
+
+[node name="Reference" type="Button" parent="LeftHandControl"]
+margin_left = -497.841
+margin_top = 265.0
+margin_right = -421.841
+margin_bottom = 285.0
+text = "Reference"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Freeparking" type="Label" parent="LeftHandControl"]
+margin_left = -506.038
+margin_top = 239.244
+margin_right = -424.038
+margin_bottom = 253.244
+text = "Free Parking:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HouseQTY" type="Label" parent="LeftHandControl"]
+margin_left = -407.675
+margin_top = 260.531
+margin_right = -325.675
+margin_bottom = 274.531
+text = "Houses Left:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HotelQTY" type="Label" parent="LeftHandControl"]
+margin_left = -406.675
+margin_top = 281.231
+margin_right = -324.675
+margin_bottom = 295.231
+text = "Hotels Left:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Node2D" parent="."]
+position = Vector2( 33.9381, -2.23038 )
+scale = Vector2( 1.36, 1.36 )
+
+[node name="Dice" type="Button" parent="Control"]
+margin_left = 359.571
+margin_top = 211.836
+margin_right = 430.571
+margin_bottom = 231.836
+shortcut = SubResource( 2 )
+text = "ROLL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="JailPayout" type="Button" parent="Control"]
+visible = false
+margin_left = 308.629
+margin_top = 269.521
+margin_right = 407.629
+margin_bottom = 289.521
+text = "Leave Jail $50"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dice1" type="Label" parent="Control"]
+margin_left = 333.188
+margin_top = 176.504
+margin_right = 373.188
+margin_bottom = 190.504
+text = "-"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dice2" type="Label" parent="Control"]
+margin_left = 405.866
+margin_top = 178.392
+margin_right = 445.866
+margin_bottom = 192.392
+text = "-"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndTurn" type="Button" parent="Control"]
+margin_left = 425.114
+margin_top = 270.0
+margin_right = 500.114
+margin_bottom = 290.0
+disabled = true
+shortcut = SubResource( 6 )
+text = "End Turn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TurnInstructor" type="Label" parent="Control"]
+margin_left = 308.168
+margin_top = -300.0
+margin_right = 453.168
+margin_bottom = -278.0
+text = "Player x's Turn"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResolveMessage" type="Label" parent="Control"]
+margin_left = 313.0
+margin_top = -271.0
+margin_right = 461.0
+margin_bottom = -148.0
+text = "Click Roll to
+Begin"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bankrupcy" type="Label" parent="Control"]
+margin_left = 308.0
+margin_top = -16.0
+margin_right = 498.0
+margin_bottom = 15.0
+text = "-"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pay" type="Button" parent="Control"]
+margin_left = 340.597
+margin_top = -81.7091
+margin_right = 437.597
+margin_bottom = -58.7091
+disabled = true
+shortcut = SubResource( 4 )
+text = "Purchase/Pay"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node" type="Node2D" parent="."]
+position = Vector2( -54.7446, -32.0917 )
+scale = Vector2( 1.4, 1.4 )
+
+[node name="Player0" type="Label" parent="Node"]
+margin_left = -504.476
+margin_top = -278.823
+margin_right = -437.476
+margin_bottom = -247.823
+custom_fonts/font = ExtResource( 8 )
+text = "Player 0
+Attributes"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player1" type="Label" parent="Node"]
+margin_left = -393.147
+margin_top = -280.453
+margin_right = -326.147
+margin_bottom = -249.453
+custom_fonts/font = SubResource( 7 )
+text = "Player 1
+attributets"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player2" type="Label" parent="Node"]
+margin_left = -503.741
+margin_top = -189.723
+margin_right = -436.741
+margin_bottom = -158.723
+custom_fonts/font = SubResource( 8 )
+text = "Player 2 
+attributets"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player3" type="Label" parent="Node"]
+margin_left = -392.319
+margin_top = -191.203
+margin_right = -325.319
+margin_bottom = -160.203
+text = "Player 3 
+attributets"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player4" type="Label" parent="Node"]
+margin_left = -502.588
+margin_top = -98.5937
+margin_right = -435.588
+margin_bottom = -67.5937
+text = "Player 4
+attributets"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player5" type="Label" parent="Node"]
+margin_left = -391.261
+margin_top = -100.225
+margin_right = -324.261
+margin_bottom = -69.2248
+text = "Player 5
+attributets"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player6" type="Label" parent="Node"]
+margin_left = -501.853
+margin_top = -8.37152
+margin_right = -434.853
+margin_bottom = 22.6285
+text = "Player 6 
+attributets"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player7" type="Label" parent="Node"]
+margin_left = -390.431
+margin_top = -8.72866
+margin_right = -323.431
+margin_bottom = 22.2713
+text = "Player 7 
+attributets"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player8" type="Label" parent="Node"]
+margin_left = -503.71
+margin_top = 84.3675
+margin_right = -436.71
+margin_bottom = 115.368
+text = "Player 8
+attributets"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player9" type="Label" parent="Node"]
+margin_left = -391.26
+margin_top = 86.104
+margin_right = -324.26
+margin_bottom = 117.104
+text = "Player 9
+attributets"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player10" type="Label" parent="Node"]
+margin_left = -505.22
+margin_top = 173.467
+margin_right = -438.22
+margin_bottom = 204.467
+text = "Player 10 
+attributets"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player11" type="Label" parent="Node"]
+margin_left = -393.799
+margin_top = 175.355
+margin_right = -326.799
+margin_bottom = 206.355
+text = "Player 11
+attributets"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player0Properties" type="Button" parent="Node"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -507.0
+margin_top = -289.0
+margin_right = -433.0
+margin_bottom = -204.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player1Properties" type="Button" parent="Node"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -398.0
+margin_top = -290.0
+margin_right = -324.0
+margin_bottom = -200.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player2Properties" type="Button" parent="Node"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -508.0
+margin_top = -203.0
+margin_right = -434.0
+margin_bottom = -112.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player3Properties" type="Button" parent="Node"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -399.0
+margin_top = -204.0
+margin_right = -325.0
+margin_bottom = -113.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player4Properties" type="Button" parent="Node"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -511.0
+margin_top = -116.0
+margin_right = -437.0
+margin_bottom = -20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player5Properties" type="Button" parent="Node"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -402.0
+margin_top = -117.0
+margin_right = -328.0
+margin_bottom = -17.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="DiceRoll" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 1 )
+
+[node name="ChaChing" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 2 )
+
+[node name="Ding" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 5 )
+
+[node name="Invalid" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 7 )
+volume_db = -7.0
+pitch_scale = 0.9
+[connection signal="button_down" from="Board/CanvasLayer/PauseMenu/VBoxContainer/Resume" to="." method="Resume_button"]
+[connection signal="button_down" from="Board/CanvasLayer/PauseMenu/VBoxContainer/Admin" to="." method="_on_Admin_button_down"]
+[connection signal="button_down" from="Board/CanvasLayer/PauseMenu/VBoxContainer/MainMenu" to="." method="MainMenu_button"]
+[connection signal="item_selected" from="Board/CanvasLayer/Panel/ItemList" to="." method="PropertyPicked"]
+[connection signal="button_down" from="Board/CanvasLayer/Panel/Close" to="." method="CloseReference"]
+[connection signal="button_down" from="Board/CanvasLayer/Panel/Button" to="." method="TradeButton"]
+[connection signal="pressed" from="Board/CanvasLayer/Panel/Invest" to="." method="_on_Invest_pressed"]
+[connection signal="pressed" from="Board/CanvasLayer/PropertyProperties/CloseProp" to="." method="ClosePropProp"]
+[connection signal="button_down" from="Board/CanvasLayer/PropertyProperties/TradeProp" to="." method="TradeProp"]
+[connection signal="button_down" from="Board/CanvasLayer/PropertyProperties/RentDealProp" to="." method="RentDealFromProperty"]
+[connection signal="button_down" from="Board/CanvasLayer/PropertyProperties/Mortgage" to="." method="Mortgage"]
+[connection signal="button_down" from="Board/CanvasLayer/PropertyProperties/BuyHouse" to="." method="BuyHouse"]
+[connection signal="button_down" from="Board/CanvasLayer/PropertyProperties/BuyHouse2" to="." method="Build3Houses"]
+[connection signal="button_down" from="Board/CanvasLayer/PropertyProperties/SellHouse" to="." method="SellHouse"]
+[connection signal="pressed" from="Board/CanvasLayer/PropertyProperties/NextMonopolyProp" to="." method="NextMonopolyProp"]
+[connection signal="pressed" from="Board/CanvasLayer/PropertyProperties/NextOwnedMonopoly" to="." method="NextOwnedMonopoly"]
+[connection signal="pressed" from="Board/CanvasLayer/PlayerProperties/ClosePlayerProp" to="." method="_on_ClosePlayerProp_pressed"]
+[connection signal="button_down" from="Board/CanvasLayer/PlayerProperties/Mortgage" to="." method="Mortgage"]
+[connection signal="button_down" from="Board/CanvasLayer/PlayerProperties/BuyHouse" to="." method="BuyHouse"]
+[connection signal="button_down" from="Board/CanvasLayer/PlayerProperties/SellHouse" to="." method="SellHouse"]
+[connection signal="pressed" from="Board/CanvasLayer/Auction/Submit" to="." method="_on_Submit_pressed"]
+[connection signal="button_down" from="Board/CanvasLayer/Auction/Increase1" to="." method="_on_Increase1_button_down"]
+[connection signal="pressed" from="Board/CanvasLayer/Auction/Increase10" to="." method="_on_Increase10_pressed"]
+[connection signal="pressed" from="Board/CanvasLayer/Auction/Increase100" to="." method="_on_Increase100_pressed"]
+[connection signal="button_down" from="Board/CanvasLayer/RuleVarient/Pass" to="." method="_on_Pass_button_down"]
+[connection signal="button_down" from="Board/CanvasLayer/RuleVarient/Railroad1" to="." method="_on_Railroad1_button_down"]
+[connection signal="button_down" from="Board/CanvasLayer/RuleVarient/Railroad2" to="." method="_on_Railroad2_button_down"]
+[connection signal="button_down" from="Board/CanvasLayer/RuleVarient/Railroad3" to="." method="_on_Railroad3_button_down"]
+[connection signal="pressed" from="Board/CanvasLayer/TradeScreen/CloseProp" to="." method="CloseTrading"]
+[connection signal="button_down" from="Board/CanvasLayer/TradeScreen/Mortgage" to="." method="Mortgage"]
+[connection signal="button_down" from="Board/CanvasLayer/TradeScreen/TradeConfrim" to="." method="TradeConfirmButton"]
+[connection signal="button_down" from="Board/CanvasLayer/TradeScreen/SellHouse" to="." method="SellHouse"]
+[connection signal="changed" from="Board/CanvasLayer/TradeScreen/MoneyPlayerSelector" to="." method="MoneyPlayerSelector"]
+[connection signal="value_changed" from="Board/CanvasLayer/TradeScreen/MoneyPlayerSelector" to="." method="MoneyPlayerSelectorUpdate"]
+[connection signal="value_changed" from="Board/CanvasLayer/TradeScreen/MoneyOffered" to="." method="_on_MoneyOffered_value_changed"]
+[connection signal="changed" from="Board/CanvasLayer/TradeScreen/PropertySlector" to="." method="PropertySlector"]
+[connection signal="value_changed" from="Board/CanvasLayer/TradeScreen/PropertySlector" to="." method="PropertySlectorUpdated"]
+[connection signal="button_down" from="Board/CanvasLayer/Admin/CloseAdmin" to="." method="_on_CloseAdmin_button_down"]
+[connection signal="button_down" from="Board/CanvasLayer/Admin/AlterPlayer" to="." method="_on_AlterPlayer_button_down"]
+[connection signal="value_changed" from="Board/CanvasLayer/Admin/PlayerEdit" to="." method="_on_MoneyPlayerSelector_value_changed"]
+[connection signal="value_changed" from="Board/CanvasLayer/Admin/PropertyEdit" to="." method="_on_PropertyEdit_value_changed"]
+[connection signal="pressed" from="Board/CanvasLayer/RentDeal/CloseInvest" to="." method="_on_CloseInvest_pressed"]
+[connection signal="pressed" from="Board/CanvasLayer/RentDeal/ConfirmDeal" to="." method="ConfirmRentDeal"]
+[connection signal="pressed" from="Board/CanvasLayer/RentDeal/EndDeal" to="." method="EndDeal"]
+[connection signal="value_changed" from="Board/CanvasLayer/RentDeal/PlayerDealtSelector" to="." method="PlayerDealtSelector"]
+[connection signal="value_changed" from="Board/CanvasLayer/RentDeal/PercentOffered" to="." method="_on_PercentOffered_value_changed"]
+[connection signal="value_changed" from="Board/CanvasLayer/RentDeal/RentPropertySlector" to="." method="_on_RentPropertySlector_value_changed"]
+[connection signal="pressed" from="LeftHandControl/Reference" to="." method="ReferenceButton"]
+[connection signal="button_down" from="Control/Dice" to="." method="RollDice"]
+[connection signal="button_down" from="Control/JailPayout" to="." method="PaytoLeaveJail"]
+[connection signal="button_down" from="Control/EndTurn" to="." method="turnDone"]
+[connection signal="button_down" from="Control/Pay" to="." method="PaySpace"]
+[connection signal="button_down" from="Node/Player0Properties" to="." method="_on_Player0Properties_button_down"]
+[connection signal="button_down" from="Node/Player1Properties" to="." method="_on_Player1Properties_button_down"]
+[connection signal="button_down" from="Node/Player2Properties" to="." method="_on_Player2Properties_button_down"]
+[connection signal="button_down" from="Node/Player3Properties" to="." method="_on_Player3Properties_button_down"]
+[connection signal="button_down" from="Node/Player4Properties" to="." method="_on_Player4Properties_button_down"]
+[connection signal="button_down" from="Node/Player5Properties" to="." method="_on_Player5Properties_button_down"]

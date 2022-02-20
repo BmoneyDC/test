@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Info.gd" type="Script" id=1]
+[ext_resource path="res://art/Rainbow.png" type="Texture" id=2]
+[ext_resource path="res://art/superman.png" type="Texture" id=3]
+[ext_resource path="res://art/Dice.png" type="Texture" id=4]
+[ext_resource path="res://art/Ptony.png" type="Texture" id=5]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.917647, 0.886275, 0.670588, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="chair" type="Sprite" parent="."]
+position = Vector2( 89.9632, 98.9632 )
+scale = Vector2( 0.899265, 0.899265 )
+texture = ExtResource( 4 )
+
+[node name="chair2" type="Sprite" parent="."]
+position = Vector2( 883.201, 127.799 )
+scale = Vector2( 1.41599, 1.41599 )
+texture = ExtResource( 5 )
+
+[node name="chair3" type="Sprite" parent="."]
+position = Vector2( 893.992, 444.992 )
+scale = Vector2( 1.30017, 1.30017 )
+texture = ExtResource( 2 )
+
+[node name="chair4" type="Sprite" parent="."]
+position = Vector2( 115.018, 438.982 )
+scale = Vector2( 1.38035, 1.38035 )
+texture = ExtResource( 3 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 10.0
+margin_top = 572.0
+margin_right = 78.0
+margin_bottom = 592.0
+text = "Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 366.795
+margin_top = 160.189
+margin_right = 663.795
+margin_bottom = 322.189
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Welcome to GREED
+A totally original game about
+being the richest person in the universe"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

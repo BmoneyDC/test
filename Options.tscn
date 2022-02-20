@@ -1,0 +1,464 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Options.gd" type="Script" id=1]
+[ext_resource path="res://art/Rainbow.png" type="Texture" id=2]
+[ext_resource path="res://art/superman.png" type="Texture" id=3]
+[ext_resource path="res://art/Dice.png" type="Texture" id=4]
+[ext_resource path="res://art/Ptony.png" type="Texture" id=5]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.917647, 0.886275, 0.670588, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Names" type="Panel" parent="CanvasLayer"]
+visible = false
+margin_left = 230.484
+margin_top = 124.523
+margin_right = 804.484
+margin_bottom = 456.523
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="close" type="Button" parent="CanvasLayer/Names"]
+margin_left = 234.205
+margin_top = 277.458
+margin_right = 333.205
+margin_bottom = 297.458
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Names"]
+margin_left = 82.728
+margin_top = 43.0
+margin_right = 240.728
+margin_bottom = 215.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerName" type="LineEdit" parent="CanvasLayer/Names/VBoxContainer"]
+margin_right = 158.0
+margin_bottom = 24.0
+text = "Player 0"
+
+[node name="PlayerName2" type="LineEdit" parent="CanvasLayer/Names/VBoxContainer"]
+margin_top = 28.0
+margin_right = 158.0
+margin_bottom = 52.0
+text = "Player 0"
+
+[node name="PlayerName3" type="LineEdit" parent="CanvasLayer/Names/VBoxContainer"]
+margin_top = 56.0
+margin_right = 158.0
+margin_bottom = 80.0
+text = "Player 0"
+
+[node name="PlayerName4" type="LineEdit" parent="CanvasLayer/Names/VBoxContainer"]
+margin_top = 84.0
+margin_right = 158.0
+margin_bottom = 108.0
+text = "Player 0"
+
+[node name="PlayerName5" type="LineEdit" parent="CanvasLayer/Names/VBoxContainer"]
+margin_top = 112.0
+margin_right = 158.0
+margin_bottom = 136.0
+text = "Player 0"
+
+[node name="PlayerName6" type="LineEdit" parent="CanvasLayer/Names/VBoxContainer"]
+margin_top = 140.0
+margin_right = 158.0
+margin_bottom = 164.0
+text = "Player 0"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Names"]
+margin_left = 319.02
+margin_top = 43.0
+margin_right = 477.02
+margin_bottom = 215.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerName" type="LineEdit" parent="CanvasLayer/Names/VBoxContainer2"]
+margin_right = 158.0
+margin_bottom = 24.0
+text = "Player 0"
+
+[node name="PlayerName2" type="LineEdit" parent="CanvasLayer/Names/VBoxContainer2"]
+margin_top = 28.0
+margin_right = 158.0
+margin_bottom = 52.0
+text = "Player 0"
+
+[node name="PlayerName3" type="LineEdit" parent="CanvasLayer/Names/VBoxContainer2"]
+margin_top = 56.0
+margin_right = 158.0
+margin_bottom = 80.0
+text = "Player 0"
+
+[node name="PlayerName4" type="LineEdit" parent="CanvasLayer/Names/VBoxContainer2"]
+margin_top = 84.0
+margin_right = 158.0
+margin_bottom = 108.0
+text = "Player 0"
+
+[node name="PlayerName5" type="LineEdit" parent="CanvasLayer/Names/VBoxContainer2"]
+margin_top = 112.0
+margin_right = 158.0
+margin_bottom = 136.0
+text = "Player 0"
+
+[node name="PlayerName6" type="LineEdit" parent="CanvasLayer/Names/VBoxContainer2"]
+margin_top = 140.0
+margin_right = 158.0
+margin_bottom = 164.0
+text = "Player 0"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+margin_left = 339.0
+margin_top = 141.0
+margin_right = 684.0
+margin_bottom = 459.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+margin_right = 138.0
+margin_bottom = 318.0
+custom_constants/separation = 22
+
+[node name="Title" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+margin_right = 138.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0.188235, 0.541176, 0.823529, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Greed Settings"
+align = 1
+valign = 1
+
+[node name="Start" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+visible = false
+margin_top = 36.0
+margin_right = 118.0
+margin_bottom = 56.0
+text = "test"
+
+[node name="player" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 138.0
+margin_bottom = 50.0
+custom_colors/font_color = Color( 0.701961, 0.188235, 0.301961, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Number of Players"
+align = 1
+valign = 1
+
+[node name="PlayerCount" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 138.0
+margin_bottom = 86.0
+custom_colors/font_color = Color( 0.0705882, 0.65098, 0.556863, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+
+[node name="numpeople" type="HSlider" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+margin_top = 108.0
+margin_right = 138.0
+margin_bottom = 124.0
+min_value = 2.0
+max_value = 12.0
+value = 2.0
+rounded = true
+
+[node name="Properties" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+margin_top = 146.0
+margin_right = 138.0
+margin_bottom = 160.0
+custom_colors/font_color = Color( 0.701961, 0.188235, 0.301961, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Number of Properties"
+align = 1
+valign = 1
+
+[node name="PropCount" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+margin_top = 182.0
+margin_right = 138.0
+margin_bottom = 196.0
+custom_colors/font_color = Color( 0.0705882, 0.65098, 0.556863, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+
+[node name="PropSelector" type="HSlider" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+margin_top = 218.0
+margin_right = 138.0
+margin_bottom = 234.0
+min_value = 8.0
+max_value = 40.0
+step = 4.0
+value = 40.0
+rounded = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+visible = false
+margin_top = 256.0
+margin_right = 138.0
+margin_bottom = 296.0
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 3.0
+margin_top = 13.0
+margin_right = 54.0
+margin_bottom = 27.0
+text = "Practice"
+align = 1
+valign = 1
+
+[node name="CheckButton" type="CheckButton" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 58.0
+margin_right = 134.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+visible = false
+margin_top = 188.0
+margin_right = 161.0
+margin_bottom = 228.0
+
+[node name="nameswap" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_top = 13.0
+margin_right = 81.0
+margin_bottom = 27.0
+text = "Swap Names"
+align = 1
+valign = 1
+
+[node name="nameswap2" type="CheckButton" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 85.0
+margin_right = 161.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameSheet" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+margin_top = 256.0
+margin_right = 138.0
+margin_bottom = 276.0
+text = "Change Names"
+
+[node name="Quit" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+margin_top = 298.0
+margin_right = 138.0
+margin_bottom = 318.0
+text = "Main Menu"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+margin_left = 142.0
+margin_right = 345.0
+margin_bottom = 318.0
+
+[node name="DiceSides" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 203.0
+margin_bottom = 24.0
+
+[node name="DiceSides" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2/DiceSides"]
+margin_top = 5.0
+margin_right = 71.0
+margin_bottom = 19.0
+hint_tooltip = "Highest possible dice face"
+mouse_filter = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Dice Sides:"
+
+[node name="DiceSideSelector" type="SpinBox" parent="CenterContainer/HBoxContainer/VBoxContainer2/DiceSides"]
+margin_left = 75.0
+margin_right = 149.0
+margin_bottom = 24.0
+min_value = 1.0
+value = 6.0
+
+[node name="InvestmentDeals" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 28.0
+margin_right = 203.0
+margin_bottom = 68.0
+
+[node name="Investment" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2/InvestmentDeals"]
+margin_top = 13.0
+margin_right = 118.0
+margin_bottom = 27.0
+hint_tooltip = "You can give partial ownership to other players"
+mouse_filter = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Investment Deals:"
+
+[node name="EnableInvestment" type="CheckButton" parent="CenterContainer/HBoxContainer/VBoxContainer2/InvestmentDeals"]
+margin_left = 122.0
+margin_right = 198.0
+margin_bottom = 40.0
+
+[node name="Shufflecontainter" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 72.0
+margin_right = 203.0
+margin_bottom = 112.0
+
+[node name="Shuffle" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2/Shufflecontainter"]
+margin_top = 13.0
+margin_right = 117.0
+margin_bottom = 27.0
+hint_tooltip = "The arrangement of properties are mixed in a random way"
+mouse_filter = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Shuffle Properties:"
+
+[node name="ShuffleButton" type="CheckButton" parent="CenterContainer/HBoxContainer/VBoxContainer2/Shufflecontainter"]
+margin_left = 121.0
+margin_right = 197.0
+margin_bottom = 40.0
+
+[node name="Railroad" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 116.0
+margin_right = 203.0
+margin_bottom = 156.0
+alignment = 1
+
+[node name="Railroadinfo" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2/Railroad"]
+margin_left = 20.0
+margin_top = 13.0
+margin_right = 103.0
+margin_bottom = 27.0
+hint_tooltip = "You can travel from one railroad to another when one is landed on"
+mouse_filter = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "RailroadRule:"
+
+[node name="RailroadRuleSelector" type="CheckButton" parent="CenterContainer/HBoxContainer/VBoxContainer2/Railroad"]
+margin_left = 107.0
+margin_right = 183.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Auction" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 160.0
+margin_right = 203.0
+margin_bottom = 200.0
+alignment = 1
+
+[node name="Auctioninfo" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2/Auction"]
+margin_top = 13.0
+margin_right = 123.0
+margin_bottom = 27.0
+hint_tooltip = "Properties are auctioned when a property is not purchased"
+mouse_filter = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Auction Properties:"
+
+[node name="Auctionrule" type="CheckButton" parent="CenterContainer/HBoxContainer/VBoxContainer2/Auction"]
+margin_left = 127.0
+margin_right = 203.0
+margin_bottom = 40.0
+pressed = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NoMonopolys" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 204.0
+margin_right = 203.0
+margin_bottom = 244.0
+alignment = 1
+
+[node name="NoMonInfo" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2/NoMonopolys"]
+margin_left = 11.0
+margin_top = 13.0
+margin_right = 112.0
+margin_bottom = 27.0
+hint_tooltip = "You do not need to own an
+entire Monopoly to buy houses"
+mouse_filter = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "No Monopolies:"
+
+[node name="NoMonRule" type="CheckButton" parent="CenterContainer/HBoxContainer/VBoxContainer2/NoMonopolys"]
+margin_left = 116.0
+margin_right = 192.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="chair" type="Sprite" parent="."]
+position = Vector2( 89.9632, 98.9632 )
+scale = Vector2( 0.899265, 0.899265 )
+texture = ExtResource( 4 )
+
+[node name="chair2" type="Sprite" parent="."]
+position = Vector2( 883.201, 127.799 )
+scale = Vector2( 1.41599, 1.41599 )
+texture = ExtResource( 5 )
+
+[node name="chair3" type="Sprite" parent="."]
+position = Vector2( 893.992, 444.992 )
+scale = Vector2( 1.30017, 1.30017 )
+texture = ExtResource( 2 )
+
+[node name="chair4" type="Sprite" parent="."]
+position = Vector2( 115.018, 438.982 )
+scale = Vector2( 1.38035, 1.38035 )
+texture = ExtResource( 3 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 10.0
+margin_top = 572.0
+margin_right = 78.0
+margin_bottom = 592.0
+text = "INFO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CanvasLayer/Names/close" to="." method="closeNames"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="changed" from="CenterContainer/HBoxContainer/VBoxContainer/numpeople" to="." method="_on_numpeople_changed"]
+[connection signal="changed" from="CenterContainer/HBoxContainer/VBoxContainer/PropSelector" to="." method="_on_PropSelector_changed"]
+[connection signal="toggled" from="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer/CheckButton" to="." method="_on_CheckButton_toggled"]
+[connection signal="toggled" from="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer2/nameswap2" to="." method="_on_nameswap2_toggled"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/NameSheet" to="." method="_on_NameSheet_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="changed" from="CenterContainer/HBoxContainer/VBoxContainer2/DiceSides/DiceSideSelector" to="." method="_on_DiceSideSelector_changed"]
+[connection signal="value_changed" from="CenterContainer/HBoxContainer/VBoxContainer2/DiceSides/DiceSideSelector" to="." method="_on_DiceSideSelector_value_changed"]
+[connection signal="toggled" from="CenterContainer/HBoxContainer/VBoxContainer2/InvestmentDeals/EnableInvestment" to="." method="InvestmentToggle"]
+[connection signal="toggled" from="CenterContainer/HBoxContainer/VBoxContainer2/Railroad/RailroadRuleSelector" to="." method="_on_RailroadRuleSelector_toggled"]
+[connection signal="toggled" from="CenterContainer/HBoxContainer/VBoxContainer2/Auction/Auctionrule" to="." method="_on_Auctionrule_toggled"]
+[connection signal="toggled" from="CenterContainer/HBoxContainer/VBoxContainer2/NoMonopolys/NoMonRule" to="." method="_on_NoMonRule_toggled"]
+[connection signal="pressed" from="Button" to="." method="info_button"]
